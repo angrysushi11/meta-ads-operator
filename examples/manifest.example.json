@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "ad_account_id": "111111111111111",
+  "campaign_id": "222222222222222",
+  "ad_set_id": "333333333333333",
+  "identity": {
+    "page_id": "555555555555555",
+    "instagram_user_id": "666666666666666"
+  },
+  "ads": [
+    {
+      "name": "BRAND_US_PROSPECTING_C01_V01",
+      "creative_name": "BRAND_US_PROSPECTING_C01_V01_CREATIVE",
+      "media_path": "media/concept-01-v01-4x5.png",
+      "media_sha256": "REPLACE_WITH_EXACT_SHA256",
+      "primary_text": "Approved primary text goes here.",
+      "headline": "Approved headline",
+      "description": "Approved description",
+      "cta": "LEARN_MORE",
+      "destination_url": "https://shop.example.com/products/example",
+      "url_tags": "utm_source=meta&utm_medium=paid_social&utm_campaign=example&utm_content=concept_01_v01",
+      "status": "PAUSED",
+      "creative_features": "OPT_OUT"
+    }
+  ]
+}
+

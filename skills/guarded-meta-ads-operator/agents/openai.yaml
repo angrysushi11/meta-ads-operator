@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guarded Meta Ads Operator"
+  short_description: "Plan and operate Meta ads through a guarded local CLI"
+  default_prompt: "Use $guarded-meta-ads-operator to understand my Meta Ads request, propose sensible defaults, show one shared-understanding checkpoint, then plan and verify the work safely."

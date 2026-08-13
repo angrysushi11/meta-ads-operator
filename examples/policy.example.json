@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "graph_version": "v25.0",
+  "approval": {
+    "mode": "supervised",
+    "standing_authority": {
+      "actions": [],
+      "expires_at": null
+    }
+  },
+  "allowed_actions": [
+    "read",
+    "inventory",
+    "validate",
+    "insights",
+    "evaluate_rule",
+    "create_campaign",
+    "create_ad_set",
+    "create_ads",
+    "set_status",
+    "set_budget"
+  ],
+  "scope": {
+    "ad_account_ids": ["111111111111111"],
+    "campaign_ids": ["222222222222222"],
+    "ad_set_ids": ["333333333333333"],
+    "ad_ids": ["444444444444444"],
+    "page_ids": ["555555555555555"],
+    "instagram_user_ids": ["666666666666666"],
+    "destination_hosts": ["shop.example.com"],
+    "media_roots": ["/absolute/path/to/your/launch-folder"]
+  },
+  "limits": {
+    "max_ads_per_batch": 10,
+    "max_daily_budget_minor": 5000,
+    "max_budget_increase_percent": 20,
+    "max_http_attempts_per_run": 100,
+    "stop_at_usage_percent": 80,
+    "currency_minor_exponent": 2
+  },
+  "invariants": {
+    "new_ads_must_start_paused": true,
+    "parents_must_be_paused_for_create": true,
+    "max_spend_today_minor_for_create": 0
+  },
+  "naming_patterns": {
+    "campaign": "[A-Z0-9_]{5,120}",
+    "ad_set": "[A-Z0-9_]{5,120}",
+    "ad": "[A-Z0-9_]{5,160}"
+  },
+  "receipt_dir": "../receipts"
+}

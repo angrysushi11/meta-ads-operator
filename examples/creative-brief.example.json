@@ -1,0 +1,14 @@
+{
+  "status": "PROPOSED_NOT_APPROVED",
+  "product": "Describe the product in one factual sentence.",
+  "offer": "Describe the offer and price, if any.",
+  "audience": "Describe the intended audience without unsupported personal-attribute language.",
+  "objective": "Describe the business outcome.",
+  "destination": "https://shop.example.com/products/example",
+  "approved_claims": ["Only claims supported by the supplied evidence pack"],
+  "prohibited_claims": ["Claims the user or evidence pack excludes"],
+  "voice_examples": ["One or two examples of approved brand voice"],
+  "variant_count": 3,
+  "copy_mode": "agent_proposes_for_review"
+}
+

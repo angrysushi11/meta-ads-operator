@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "ad_account_id": "111111111111111",
+  "campaign_id": "222222222222222",
+  "ad_set_id": "333333333333333",
+  "identity": {
+    "page_id": "555555555555555",
+    "instagram_user_id": "666666666666666"
+  },
+  "ads": [
+    {
+      "name": "BRAND_US_SINGLE_IMAGE_V01",
+      "format": "single_image",
+      "media_path": "media/single-image.png",
+      "media_sha256": "REPLACE_WITH_EXACT_SHA256",
+      "primary_text": "Approved primary text.",
+      "headline": "Approved headline",
+      "description": "Approved description",
+      "cta": "LEARN_MORE",
+      "destination_url": "https://shop.example.com/products/example",
+      "url_tags": "utm_source=meta&utm_medium=paid_social&utm_campaign=example&utm_content=single_image",
+      "status": "PAUSED"
+    },
+    {
+      "name": "BRAND_US_CAROUSEL_V01",
+      "format": "carousel",
+      "primary_text": "Approved carousel text.",
+      "headline": "Carousel fallback headline",
+      "description": "Approved description",
+      "cta": "LEARN_MORE",
+      "destination_url": "https://shop.example.com/collections/example",
+      "url_tags": "utm_source=meta&utm_medium=paid_social&utm_campaign=example&utm_content=carousel",
+      "status": "PAUSED",
+      "cards": [
+        {
+          "media_path": "media/card-01.png",
+          "media_sha256": "REPLACE_WITH_EXACT_SHA256",
+          "headline": "Card one",
+          "description": "First approved card"
+        },
+        {
+          "media_path": "media/card-02.png",
+          "media_sha256": "REPLACE_WITH_EXACT_SHA256",
+          "headline": "Card two",
+          "description": "Second approved card"
+        }
+      ]
+    },
+    {
+      "name": "BRAND_US_SINGLE_VIDEO_V01",
+      "format": "single_video",
+      "media_path": "media/video.mp4",
+      "media_sha256": "REPLACE_WITH_EXACT_SHA256",
+      "primary_text": "Approved video text.",
+      "headline": "Approved video headline",
+      "description": "Approved description",
+      "cta": "LEARN_MORE",
+      "destination_url": "https://shop.example.com/products/example",
+      "url_tags": "utm_source=meta&utm_medium=paid_social&utm_campaign=example&utm_content=single_video",
+      "status": "PAUSED"
+    },
+    {
+      "name": "BRAND_US_DYNAMIC_IMAGE_V01",
+      "format": "dynamic_image",
+      "media": [
+        {"media_path": "media/dynamic-01.png", "media_sha256": "REPLACE_WITH_EXACT_SHA256"},
+        {"media_path": "media/dynamic-02.png", "media_sha256": "REPLACE_WITH_EXACT_SHA256"}
+      ],
+      "primary_text": "Fallback approved text.",
+      "headline": "Fallback approved headline",
+      "description": "Approved description",
+      "bodies": ["Approved body one.", "Approved body two."],
+      "headlines": ["Approved title one", "Approved title two"],
+      "descriptions": ["Approved description"],
+      "cta": "LEARN_MORE",
+      "destination_url": "https://shop.example.com/products/example",
+      "url_tags": "utm_source=meta&utm_medium=paid_social&utm_campaign=example&utm_content=dynamic_image",
+      "status": "PAUSED"
+    },
+    {
+      "name": "BRAND_US_FLEXIBLE_IMAGE_V01",
+      "format": "flexible_image",
+      "media": [
+        {"media_path": "media/flexible-01.png", "media_sha256": "REPLACE_WITH_EXACT_SHA256"},
+        {"media_path": "media/flexible-02.png", "media_sha256": "REPLACE_WITH_EXACT_SHA256"}
+      ],
+      "primary_text": "Fallback approved text.",
+      "headline": "Fallback approved headline",
+      "description": "Approved description",
+      "bodies": ["Approved body one.", "Approved body two."],
+      "headlines": ["Approved title one", "Approved title two"],
+      "descriptions": ["Approved description"],
+      "cta": "LEARN_MORE",
+      "destination_url": "https://shop.example.com/products/example",
+      "url_tags": "utm_source=meta&utm_medium=paid_social&utm_campaign=example&utm_content=flexible_image",
+      "status": "PAUSED"
+    }
+  ]
+}

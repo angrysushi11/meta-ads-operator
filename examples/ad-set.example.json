@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "ad_account_id": "111111111111111",
+  "campaign_id": "222222222222222",
+  "name": "BRAND_US_BROAD_25PLUS_01",
+  "billing_event": "IMPRESSIONS",
+  "optimization_goal": "OFFSITE_CONVERSIONS",
+  "promoted_object": {
+    "pixel_id": "777777777777777",
+    "custom_event_type": "PURCHASE"
+  },
+  "targeting": {
+    "geo_locations": {"countries": ["US"]},
+    "age_min": 25,
+    "publisher_platforms": ["facebook", "instagram"]
+  },
+  "status": "PAUSED"
+}
+

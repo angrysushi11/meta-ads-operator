@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "name": "pause-high-impression-zero-outbound-proposal",
+  "action": "propose_pause",
+  "conditions": [
+    {"metric": "impressions", "operator": "gte", "value": 1500},
+    {"metric": "outbound_clicks", "operator": "eq", "value": 0}
+  ]
+}
+

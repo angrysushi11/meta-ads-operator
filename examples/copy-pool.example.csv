@@ -1,0 +1,3 @@
+copy_id,primary_text,headline,description,cta,destination,approval_status,source_reference
+C01,"Proposed primary text","Proposed headline","Proposed description",LEARN_MORE,https://shop.example.com/products/example,PROPOSED_NOT_APPROVED,creative-brief.example.json
+

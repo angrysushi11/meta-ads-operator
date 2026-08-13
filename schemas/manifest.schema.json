@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/guarded-meta-ads-operator/manifest.schema.json",
+  "title": "Guarded Meta Ads Operator creative manifest",
+  "type": "object",
+  "required": ["schema_version", "ad_account_id", "campaign_id", "ad_set_id", "identity", "ads"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "ads": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "primary_text", "headline", "destination_url"],
+        "properties": {
+          "format": {
+            "enum": ["single_image", "carousel", "single_video", "dynamic_image", "flexible_image"]
+          },
+          "status": {"const": "PAUSED"},
+          "cards": {"type": "array", "minItems": 2, "maxItems": 10},
+          "media": {"type": "array", "minItems": 2, "maxItems": 10}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"format": {"const": "carousel"}}, "required": ["format"]},
+            "then": {"required": ["cards"]}
+          },
+          {
+            "if": {"properties": {"format": {"enum": ["dynamic_image", "flexible_image"]}}, "required": ["format"]},
+            "then": {"required": ["media", "bodies", "headlines"]}
+          },
+          {
+            "if": {"properties": {"format": {"enum": ["single_image", "single_video"]}}},
+            "then": {"required": ["media_path"]}
+          }
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "ad_account_id": "111111111111111",
+  "name": "BRAND_US_SALES_TEST_01",
+  "objective": "OUTCOME_SALES",
+  "status": "PAUSED",
+  "special_ad_categories": [],
+  "daily_budget_minor": 3000
+}
+

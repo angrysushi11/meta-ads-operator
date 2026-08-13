@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "version": "0.1.0",
+  "live_reads": ["discover", "entity_read", "insights"],
+  "local_operations": ["creative_inventory", "manifest_validation", "rule_evaluation", "immutable_planning"],
+  "live_writes": ["create_campaign_paused", "create_ad_set_paused", "create_single_image_ads", "create_carousel_ads", "create_single_video_ads", "create_dynamic_image_ads", "create_flexible_image_ads", "pause_or_activate_exact_object", "bounded_daily_budget_change"],
+  "initial_ad_status": "PAUSED",
+  "api_load_controls": ["per_run_http_attempt_cap", "ad_account_usage_header_gate", "hard_throttle_circuit_breaker", "request_accounting_in_receipts", "sequential_idempotent_resume"],
+  "excluded": ["billing", "payment_methods", "roles_and_permissions", "pixel_or_capi_installation", "website_instrumentation", "raw_graph_calls", "deletion", "archive", "catalog_dynamic_product_ads", "lead_forms", "app_install", "partnership_ads", "click_to_message", "instant_experience", "playable_or_ar"],
+  "agent_surfaces": ["Codex", "Claude Code"],
+  "mcp_required": false,
+  "hosted_server_required": false
+}

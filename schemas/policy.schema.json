@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/guarded-meta-ads-operator/policy.schema.json",
+  "title": "Guarded Meta Ads Operator policy",
+  "type": "object",
+  "required": ["schema_version", "approval", "allowed_actions", "scope", "limits", "invariants"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "graph_version": {"type": "string", "pattern": "^v[0-9]+\\.[0-9]+$"},
+    "approval": {
+      "type": "object",
+      "required": ["mode"],
+      "properties": {
+        "mode": {"enum": ["supervised", "confirm_writes_only", "execute_within_policy"]},
+        "standing_authority": {"type": "object"}
+      }
+    },
+    "allowed_actions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "scope": {"type": "object"},
+    "limits": {
+      "type": "object",
+      "properties": {
+        "max_http_attempts_per_run": {"type": "integer", "minimum": 1},
+        "stop_at_usage_percent": {"type": "number", "minimum": 1, "maximum": 100}
+      }
+    },
+    "invariants": {"type": "object"}
+  },
+  "additionalProperties": true
+}
