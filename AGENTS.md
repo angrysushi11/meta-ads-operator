@@ -17,6 +17,9 @@ explicitly changes the scope.
 5. Before execution, show one complete shared-understanding checkpoint: exact
    account and objects, action, copy/media mapping, status, budget effect,
    destinations/UTMs, exclusions, stop conditions, and rollback.
+6. For an unfamiliar creative or delivery family, run `guarded-meta
+   capabilities --format NAME`. Explain recognized prerequisites and stop when
+   no verified handler exists. Never substitute a different format.
 
 ## Authority
 
@@ -39,4 +42,3 @@ Never request a token in chat. Use the OS credential prompt or process-level
 secret injection. Run tests, `guarded-meta doctor`, a dry plan, and a one-ad
 PAUSED proof before batch widening. Stop on any mismatch. Do not mutate billing,
 payments, roles, instrumentation, websites, deletion/archive, or raw Graph APIs.
-

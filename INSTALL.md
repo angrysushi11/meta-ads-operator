@@ -38,6 +38,7 @@ python3 -m venv .venv
 python -m pip install -e .
 python -m unittest discover -s tests -v
 guarded-meta doctor
+guarded-meta capabilities
 ```
 
 For Codex, ask the agent to install the bundled skill from
@@ -96,6 +97,17 @@ The manifest can mix `single_image`, `carousel`, `single_video`,
 `dynamic_image`, and `flexible_image`. Start with one PAUSED format proof before
 widening. Catalog/DPA and account-dependent formats remain explicitly outside
 0.1.0 rather than being simulated.
+
+Before requesting an unfamiliar family, inspect it locally:
+
+```bash
+guarded-meta capabilities --format "shop ads"
+```
+
+`RECOGNIZED_NOT_SUPPORTED` means the agent understands the requested Meta
+product but this release does not have a verified writer for it. It will show
+the prerequisites and stop without contacting Meta. It will never silently
+replace the request with a supported format.
 
 ## API-load controls
 

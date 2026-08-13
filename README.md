@@ -6,6 +6,12 @@ A safety-first local CLI for creating and operating Meta ads with validated
 manifests, paused-by-default creation, bounded activation and budget controls,
 idempotency, and verified readback receipts.
 
+“Guarded” describes how writes execute, not which creative ideas are allowed:
+the operator freezes an exact plan, checks account and budget boundaries,
+requires the configured approval, stops on API pressure or mismatches, and
+verifies Meta's readback. It is not a claim that the tool supports every Meta
+advertising product.
+
 The CLI is deterministic. Codex or Claude Code provides the conversational
 layer: it can inspect an existing account, propose sensible defaults, draft
 copy from approved product materials, and turn a natural-language instruction
@@ -46,6 +52,8 @@ not bypass this operator's policy and receipt gates.
 - records every HTTP attempt and Meta usage bucket in receipts;
 - stops before exceeding a local request budget or configured Meta-usage threshold;
 - opens an immediate circuit breaker on Meta code 17/subcode 2446079 instead of retrying it.
+- reports whether a requested format is supported, recognized but missing a
+  dedicated handler, or unknown—without making a Meta request;
 
 The example safety policy uses resumable 10-ad batches, a 100-call run cap,
 and an 80% Meta-usage stop. A one-image creation path uses 10 HTTP attempts in
@@ -56,6 +64,12 @@ The current alpha intentionally excludes billing, payment methods, account
 roles, Pixel/CAPI or storefront instrumentation, arbitrary Graph calls,
 deletion/archive, catalog/DPA, lead forms, app-install, partnership,
 click-to-message, Instant Experience, playable, and AR ads.
+
+If a user asks for Shop ads, catalog/DPA, lead forms, or another unsupported
+family, the agent does not guess and the CLI does not substitute a different
+format. `guarded-meta capabilities --format "shop ads"` explains the missing
+handler and current prerequisites, then planning fails locally before any Meta
+request. See [docs/FORMAT_SUPPORT.md](docs/FORMAT_SUPPORT.md).
 
 The five included formats use payload families already proven through Meta's
 live review/delivery path in the originating implementation. This clean-room

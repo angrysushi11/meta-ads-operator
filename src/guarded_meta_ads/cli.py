@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from .capabilities import capability_report
 from .doctor import run as run_doctor
 from .errors import OperatorError
 from .executor import execute_plan
@@ -45,6 +46,12 @@ def _parser() -> argparse.ArgumentParser:
     doctor.add_argument("--policy")
 
     commands.add_parser("auth-store", help="Store a token in the OS credential store without echoing it")
+
+    capabilities = commands.add_parser(
+        "capabilities",
+        help="List supported formats and explain recognized formats that need another handler",
+    )
+    capabilities.add_argument("--format", help="Check one format name, alias, or requested ad family")
 
     inv = commands.add_parser("inventory", help="Inventory only one explicitly supplied creative folder")
     inv.add_argument("folder")
@@ -143,6 +150,9 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "auth-store":
             _emit(store_access_token())
+            return 0
+        if args.command == "capabilities":
+            _emit(capability_report(args.format))
             return 0
         if args.command == "inventory":
             result = {"folder": str(Path(args.folder).expanduser().resolve()), "media": inventory(args.folder)}

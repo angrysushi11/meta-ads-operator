@@ -10,3 +10,7 @@ first, recommend defaults, group material questions, and show one complete
 shared-understanding checkpoint before execution. Never ask for or print a
 Meta token. Never bypass policy, plan-hash, idempotency, or readback gates.
 
+For Shop/catalog, lead, app, partnership, messaging, Instant Experience, or
+another unfamiliar family, run `guarded-meta capabilities --format NAME` and
+honor its result. Do not improvise raw Graph calls or silently replace the
+requested format.

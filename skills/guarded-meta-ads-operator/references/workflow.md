@@ -16,6 +16,15 @@ guarded-meta inventory /explicit/creative/folder --output inventory.json
 If approved copy is absent, draft it in the agent layer from an approved brief.
 Do not call an LLM from the deterministic CLI.
 
+Before planning an unfamiliar format:
+
+```bash
+guarded-meta capabilities --format "shop ads"
+```
+
+Stop on `RECOGNIZED_NOT_SUPPORTED` or `UNKNOWN`. Explain prerequisites; do not
+substitute another format.
+
 ## Plan and apply
 
 ```bash
@@ -47,4 +56,3 @@ guarded-meta evaluate-rule --policy policy.json --insights insights.json --rule 
 Rule evaluation is read-only. Convert reviewed candidates into exact status or
 budget plans. Scheduled monitoring requires an always-on runtime; a sleeping
 laptop does not enforce rules.
-

@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qsl
 
+from .capabilities import SUPPORTED_CREATIVE_FORMATS, unsupported_format_message
 from .errors import ValidationError
 from .media import inspect_media
 from .policy import OperatorPolicy
@@ -13,15 +14,6 @@ from .util import normalize_meta_id, read_json, sha256_file, stable_hash, utc_no
 
 ALLOWED_AD_STATUSES = {"PAUSED", "ACTIVE"}
 ALLOWED_ENTITY_KINDS = {"campaign", "ad_set", "ad"}
-SUPPORTED_CREATIVE_FORMATS = {
-    "single_image",
-    "carousel",
-    "single_video",
-    "dynamic_image",
-    "flexible_image",
-}
-
-
 def _finalize(action: str, summary: str, policy: OperatorPolicy, body: dict[str, Any]) -> dict[str, Any]:
     plan = {
         "schema_version": 1,
@@ -122,10 +114,7 @@ def build_create_ads_plan(manifest_path: str | Path, policy: OperatorPolicy) -> 
         creative_name = str(raw.get("creative_name") or f"{name}_creative").strip()
         creative_format = str(raw.get("format", "single_image")).strip().lower()
         if creative_format not in SUPPORTED_CREATIVE_FORMATS:
-            raise ValidationError(
-                f"Unsupported creative format for {name}: {creative_format}. "
-                f"Supported: {sorted(SUPPORTED_CREATIVE_FORMATS)}"
-            )
+            raise ValidationError(unsupported_format_message(creative_format, ad_name=name))
         destination = _required_text(raw, "destination_url", prefix=f"ads[{index}].")
         policy.assert_destination(destination)
         status = str(raw.get("status", "PAUSED")).upper()

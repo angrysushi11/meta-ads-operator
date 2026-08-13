@@ -8,6 +8,8 @@
   dynamic image, and flexible image.
 - Catalog/DPA and account-dependent lead, app-install, partnership,
   click-to-message, Instant Experience, playable, and AR formats remain out.
+- Unsupported requests fail locally with a capability report. No silent format
+  substitution and no improvised raw Graph payload.
 - No token in chat, shell arguments, files, logs, or receipts.
 - New campaigns, ad sets, and ads start PAUSED.
 - Account, object IDs, destinations, media roots, names, counts, budgets, and standing authority are policy-scoped.

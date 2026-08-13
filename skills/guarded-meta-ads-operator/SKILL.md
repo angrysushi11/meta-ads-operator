@@ -14,6 +14,9 @@ deterministic validation, live writes, and receipts.
 2. Run `python scripts/check_operator.py` from this skill when installation state is uncertain.
 3. Classify the request as read, local preparation, or live write.
 4. For existing accounts, run read-only discovery before asking the user to describe the account.
+5. For any unfamiliar format, run `guarded-meta capabilities --format NAME`
+   before proposing a plan. If it is recognized but unsupported, explain the
+   prerequisite handler and stop. Never substitute another format.
 
 ## Converse efficiently
 

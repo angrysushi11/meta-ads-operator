@@ -61,6 +61,11 @@ bound by SHA-256 before upload. Catalog/DPA and account-dependent formats are
 reported as unsupported prerequisites rather than approximated with another
 format.
 
+Run `guarded-meta capabilities [--format NAME]` before planning an unfamiliar
+format. A recognized-but-unsupported or unknown request must fail locally
+without a Meta request. No handler may silently substitute another creative or
+delivery product. See `docs/FORMAT_SUPPORT.md`.
+
 ## API-load boundary
 
 The policy caps HTTP attempts per run and defines the Meta-usage percentage at
