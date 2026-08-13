@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/guarded-meta-ads-operator/manifest.schema.json",
-  "title": "Guarded Meta Ads Operator creative manifest",
+  "$id": "https://example.invalid/meta-ads-operator/manifest.schema.json",
+  "title": "Meta Ads Operator creative manifest",
   "type": "object",
   "required": ["schema_version", "ad_account_id", "campaign_id", "ad_set_id", "identity", "ads"],
   "properties": {

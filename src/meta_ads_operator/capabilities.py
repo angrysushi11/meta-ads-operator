@@ -45,6 +45,7 @@ RECOGNIZED_NOT_SUPPORTED = {
             "https://www.facebook.com/business/ads/ad-objectives/sales",
             "https://www.postman.com/meta/facebook-marketing-api/request/0w6p8rh/get-catalog-and-product-set",
         ],
+        "estimated_extension": "3-7 engineering days once an eligible populated catalog and event mapping are available",
     },
     "shop_ads": {
         "display_name": "Facebook or Instagram Shops ad",
@@ -58,7 +59,9 @@ RECOGNIZED_NOT_SUPPORTED = {
         ],
         "official_sources": [
             "https://www.facebook.com/business/shops",
+            "https://www.facebook.com/business/ads/meta-advantage/advantage-plus-shopping-ads",
         ],
+        "estimated_extension": "3-7 engineering days after Shop, commerce-account, catalog, and country eligibility are verified",
     },
     "product_tagged_ads": {
         "display_name": "Ad with product tags",
@@ -71,6 +74,22 @@ RECOGNIZED_NOT_SUPPORTED = {
         "official_sources": [
             "https://www.facebook.com/business/shops",
         ],
+        "estimated_extension": "2-4 engineering days after catalog items and product-tag eligibility are verified",
+    },
+    "collection_ads": {
+        "display_name": "Collection ad",
+        "reason": "Collection ads combine a cover asset with a product set and usually an Instant Experience destination.",
+        "prerequisites": [
+            "accessible populated catalog and product set",
+            "eligible Page and commerce assets",
+            "validated cover image or video",
+            "validated Instant Experience or supported collection destination",
+        ],
+        "official_sources": [
+            "https://www.facebook.com/business/ads/video-ad-format",
+            "https://www.facebook.com/business/ads/ad-objectives/sales",
+        ],
+        "estimated_extension": "3-6 engineering days, sharing catalog and Instant Experience foundations",
     },
     "lead_form": {
         "display_name": "Instant-form lead ad",
@@ -81,8 +100,22 @@ RECOGNIZED_NOT_SUPPORTED = {
             "lead-access and data-handling configuration",
         ],
         "official_sources": [
-            "https://www.facebook.com/business/ads/meta-advantage-plus/leads",
+            "https://www.facebook.com/business/ads/ad-objectives/lead-generation/lead-ads-with-forms",
         ],
+        "estimated_extension": "1-3 engineering days after the Page, privacy policy, form fields, and lead access are available",
+    },
+    "call_ads": {
+        "display_name": "Call ad",
+        "reason": "Call ads use a telephone destination, call-specific scheduling, optimization, and attribution configuration.",
+        "prerequisites": [
+            "eligible Page and verified business phone destination",
+            "call schedule and supported country configuration",
+            "call-specific campaign, ad-set, CTA, and attribution settings",
+        ],
+        "official_sources": [
+            "https://www.facebook.com/business/ads/ad-objectives/lead-generation/lead-ads-with-calling",
+        ],
+        "estimated_extension": "1-2 engineering days after the verified phone and account eligibility are available",
     },
     "app_install": {
         "display_name": "App-install ad",
@@ -93,7 +126,10 @@ RECOGNIZED_NOT_SUPPORTED = {
             "SDK or app-event readiness",
             "app-specific campaign and ad-set configuration",
         ],
-        "official_sources": [],
+        "official_sources": [
+            "https://www.facebook.com/business/ads/meta-advantage-plus/app-campaigns",
+        ],
+        "estimated_extension": "2-5 engineering days after the registered app, store records, and app events are ready",
     },
     "partnership_ad": {
         "display_name": "Partnership ad",
@@ -103,7 +139,10 @@ RECOGNIZED_NOT_SUPPORTED = {
             "partnership authorization",
             "supported post or creative identity",
         ],
-        "official_sources": [],
+        "official_sources": [
+            "https://www.facebook.com/business/ads/creator-marketplace",
+        ],
+        "estimated_extension": "2-4 engineering days after creator authorization and eligible content exist",
     },
     "click_to_message": {
         "display_name": "Click-to-message ad",
@@ -113,19 +152,50 @@ RECOGNIZED_NOT_SUPPORTED = {
             "Page or business identity access",
             "message template and destination validation",
         ],
-        "official_sources": [],
+        "official_sources": [
+            "https://www.facebook.com/business/ads/click-to-message-ads",
+        ],
+        "estimated_extension": "1-3 engineering days per destination family after Messenger, Instagram Direct, or WhatsApp access is verified",
+    },
+    "existing_post": {
+        "display_name": "Existing-post ad",
+        "reason": "Promoting an existing Facebook or Instagram post uses post identity, ownership, and ad-eligibility rather than a new unpublished creative.",
+        "prerequisites": [
+            "eligible Page or Instagram post",
+            "verified identity ownership and permissions",
+            "placement and objective compatibility",
+        ],
+        "official_sources": [
+            "https://www.facebook.com/business/ads/video-ad-format",
+        ],
+        "estimated_extension": "1-2 engineering days after eligible post readback is available",
     },
     "instant_experience": {
         "display_name": "Instant Experience",
         "reason": "Instant Experience uses a separate canvas/document object and component tree.",
         "prerequisites": ["eligible Page", "validated Instant Experience document and assets"],
-        "official_sources": [],
+        "official_sources": [
+            "https://www.facebook.com/business/ads/video-ad-format",
+        ],
+        "estimated_extension": "2-4 engineering days because the component document needs its own schema, asset graph, and readback",
     },
-    "playable_or_ar": {
-        "display_name": "Playable or AR ad",
-        "reason": "Playable and AR formats require specialized assets and account-dependent eligibility.",
-        "prerequisites": ["eligible account", "specialized validated asset bundle"],
-        "official_sources": [],
+    "playable_ad": {
+        "display_name": "Playable ad",
+        "reason": "Playable ads are app-promotion units with a lead-in video, interactive demo bundle, and store destination.",
+        "prerequisites": ["eligible app-ad account", "registered app and store destination", "validated lead-in video and playable bundle"],
+        "official_sources": [
+            "https://www.facebook.com/business/ads/playable-ad-format",
+        ],
+        "estimated_extension": "3-7 engineering days after a conforming playable asset bundle is available",
+    },
+    "ar_ad": {
+        "display_name": "AR ad",
+        "reason": "AR ads require a currently supported effect/product surface, specialized assets, and account-dependent eligibility.",
+        "prerequisites": ["eligible account and current AR product surface", "specialized validated effect assets"],
+        "official_sources": [
+            "https://www.facebook.com/business/ads/video-ad-format",
+        ],
+        "estimated_extension": "research spike first, then likely 3-7+ engineering days; current availability must be re-verified before implementation",
     },
 }
 
@@ -145,15 +215,20 @@ ALIASES = {
     "shops_ad": "shop_ads",
     "product_tag": "product_tagged_ads",
     "product_tags": "product_tagged_ads",
+    "collection": "collection_ads",
     "lead": "lead_form",
     "instant_form": "lead_form",
+    "call": "call_ads",
+    "call_ad": "call_ads",
     "app": "app_install",
     "partnership": "partnership_ad",
     "message": "click_to_message",
     "messaging": "click_to_message",
+    "boosted_post": "existing_post",
+    "post": "existing_post",
     "canvas": "instant_experience",
-    "playable": "playable_or_ar",
-    "ar": "playable_or_ar",
+    "playable": "playable_ad",
+    "ar": "ar_ad",
 }
 
 
@@ -224,11 +299,11 @@ def unsupported_format_message(value: str, *, ad_name: str) -> str:
             f"Recognized but unsupported creative format for {ad_name}: {value}. "
             f"{capability['reason']} Prerequisites: {prerequisites}. "
             "No Meta request was made and no substitute format will be used. "
-            "Run `guarded-meta capabilities --format " + capability["format"] + "` for the full report."
+            "Run `meta-ads capabilities --format " + capability["format"] + "` for the full report."
         )
     return (
         f"Unknown creative format for {ad_name}: {value}. "
         f"Supported: {sorted(SUPPORTED_CREATIVE_FORMATS)}. "
         "No Meta request was made and no substitute format will be used. "
-        "Run `guarded-meta capabilities` to inspect the current surface."
+        "Run `meta-ads capabilities` to inspect the current surface."
     )

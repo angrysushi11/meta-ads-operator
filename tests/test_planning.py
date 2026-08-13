@@ -4,10 +4,10 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from guarded_meta_ads.errors import ValidationError
-from guarded_meta_ads.planning import build_create_ads_plan, verify_plan
-from guarded_meta_ads.policy import OperatorPolicy
-from guarded_meta_ads.util import sha256_file
+from meta_ads_operator.errors import ValidationError
+from meta_ads_operator.planning import build_create_ads_plan, verify_plan
+from meta_ads_operator.policy import OperatorPolicy
+from meta_ads_operator.util import sha256_file
 from tests.helpers import advanced_manifest_dict, manifest_dict, policy_dict, write_json, write_png
 
 

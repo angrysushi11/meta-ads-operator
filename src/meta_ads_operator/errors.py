@@ -1,5 +1,5 @@
 class OperatorError(RuntimeError):
-    """Base failure for a guarded operator action."""
+    """Base failure for a operator action."""
 
 
 class ValidationError(OperatorError):

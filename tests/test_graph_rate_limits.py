@@ -6,8 +6,8 @@ from unittest.mock import patch
 from urllib.error import HTTPError
 from urllib.request import Request
 
-from guarded_meta_ads.errors import GraphAPIError
-from guarded_meta_ads.graph import MetaGraphClient
+from meta_ads_operator.errors import GraphAPIError
+from meta_ads_operator.graph import MetaGraphClient
 
 
 class GraphRateLimitTests(unittest.TestCase):
@@ -48,7 +48,7 @@ class GraphRateLimitTests(unittest.TestCase):
             {"x-ad-account-usage": '{"acc_id_util_pct":100}'},
             io.BytesIO(body),
         )
-        with patch("guarded_meta_ads.graph.urlopen", side_effect=error) as mocked:
+        with patch("meta_ads_operator.graph.urlopen", side_effect=error) as mocked:
             with self.assertRaisesRegex(GraphAPIError, "No retry was attempted") as raised:
                 client.get("me")
         self.assertEqual(mocked.call_count, 1)

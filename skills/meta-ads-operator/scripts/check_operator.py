@@ -7,7 +7,7 @@ import subprocess
 
 
 def main() -> int:
-    executable = shutil.which("guarded-meta")
+    executable = shutil.which("meta-ads")
     result = {
         "installed": bool(executable),
         "executable": executable,

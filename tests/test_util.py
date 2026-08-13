@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from guarded_meta_ads.util import sanitize
+from meta_ads_operator.util import sanitize
 
 
 class UtilTests(unittest.TestCase):

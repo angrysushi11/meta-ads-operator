@@ -2,7 +2,7 @@
 
 This is a bounded case report, not a universal Meta benchmark.
 
-In one e-commerce batch, the guarded uploader created and individually
+In one e-commerce batch, the operator created and individually
 verified 17 new paused ads in 3 minutes 50 seconds, about 13.5 seconds per ad.
 The earlier browser workflow averaged about 22 minutes per ad in this specific
 process.

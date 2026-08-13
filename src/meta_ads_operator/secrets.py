@@ -8,8 +8,8 @@ import sys
 from .errors import ValidationError
 
 
-ENV_NAME = "GUARDED_META_ACCESS_TOKEN"
-KEYRING_SERVICE = "guarded-meta-ads-operator"
+ENV_NAME = "META_ADS_OPERATOR_ACCESS_TOKEN"
+KEYRING_SERVICE = "meta-ads-operator"
 KEYRING_ACCOUNT = "meta-access-token"
 
 
@@ -36,7 +36,7 @@ def load_access_token() -> str:
             return result.stdout.strip()
     raise ValidationError(
         f"No Meta token available. Set {ENV_NAME} only for the current process, "
-        "or run `guarded-meta auth-store` on macOS. Never paste a token into chat."
+        "or run `meta-ads auth-store` on macOS. Never paste a token into chat."
     )
 
 

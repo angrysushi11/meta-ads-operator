@@ -4,11 +4,11 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from guarded_meta_ads.capabilities import capability_report, format_capability
-from guarded_meta_ads.errors import ValidationError
-from guarded_meta_ads.planning import build_create_ads_plan
-from guarded_meta_ads.policy import OperatorPolicy
-from guarded_meta_ads.util import sha256_file
+from meta_ads_operator.capabilities import capability_report, format_capability
+from meta_ads_operator.errors import ValidationError
+from meta_ads_operator.planning import build_create_ads_plan
+from meta_ads_operator.policy import OperatorPolicy
+from meta_ads_operator.util import sha256_file
 from tests.helpers import manifest_dict, policy_dict, write_json, write_png
 
 
@@ -24,6 +24,17 @@ class CapabilityTests(unittest.TestCase):
         result = capability_report("dynamic_image")["request"]
         self.assertEqual(result["state"], "SUPPORTED")
         self.assertIn("not a catalog/DPA", result["description"])
+
+    def test_every_recognized_family_has_sources_and_extension_estimate(self) -> None:
+        report = capability_report()
+        for name, capability in report["recognized_not_supported"].items():
+            with self.subTest(name=name):
+                self.assertTrue(capability["official_sources"])
+                self.assertTrue(capability["estimated_extension"])
+
+    def test_playable_and_ar_are_separate_capabilities(self) -> None:
+        self.assertEqual(format_capability("playable")["format"], "playable_ad")
+        self.assertEqual(format_capability("ar")["format"], "ar_ad")
 
     def test_recognized_unsupported_format_fails_during_local_planning(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

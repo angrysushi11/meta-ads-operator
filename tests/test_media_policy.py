@@ -4,9 +4,9 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from guarded_meta_ads.errors import PolicyError
-from guarded_meta_ads.media import inventory
-from guarded_meta_ads.policy import OperatorPolicy
+from meta_ads_operator.errors import PolicyError
+from meta_ads_operator.media import inventory
+from meta_ads_operator.policy import OperatorPolicy
 from tests.helpers import policy_dict, write_json, write_png
 
 

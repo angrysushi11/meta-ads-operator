@@ -7,11 +7,11 @@ from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
-from guarded_meta_ads.errors import PolicyError
-from guarded_meta_ads.executor import execute_plan
-from guarded_meta_ads.planning import build_budget_plan, build_create_ads_plan, build_status_plan
-from guarded_meta_ads.policy import OperatorPolicy
-from guarded_meta_ads.util import sha256_file
+from meta_ads_operator.errors import PolicyError
+from meta_ads_operator.executor import execute_plan
+from meta_ads_operator.planning import build_budget_plan, build_create_ads_plan, build_status_plan
+from meta_ads_operator.policy import OperatorPolicy
+from meta_ads_operator.util import sha256_file
 from tests.helpers import advanced_manifest_dict, manifest_dict, policy_dict, write_json, write_png
 
 

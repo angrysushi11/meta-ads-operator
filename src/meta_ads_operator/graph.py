@@ -217,7 +217,7 @@ class MetaGraphClient:
         fields: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
         source = Path(file_path).expanduser().resolve()
-        boundary = f"----guarded-meta-{secrets.token_hex(16)}"
+        boundary = f"----meta-ads-{secrets.token_hex(16)}"
         chunks: list[bytes] = []
         for key, value in (fields or {}).items():
             chunks.extend(

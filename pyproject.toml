@@ -3,13 +3,13 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "guarded-meta-ads-operator"
+name = "meta-ads-operator"
 version = "0.1.0"
 description = "A local, safety-first CLI for planning and operating Meta ads."
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
-authors = [{name = "Guarded Meta Ads Operator contributors"}]
+authors = [{name = "Meta Ads Operator contributors"}]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Programming Language :: Python :: 3",
@@ -25,7 +25,7 @@ release = [
 ]
 
 [project.scripts]
-guarded-meta = "guarded_meta_ads.cli:main"
+meta-ads = "meta_ads_operator.cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

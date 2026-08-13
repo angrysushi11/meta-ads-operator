@@ -4,8 +4,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from guarded_meta_ads.policy import OperatorPolicy
-from guarded_meta_ads.rules import evaluate
+from meta_ads_operator.policy import OperatorPolicy
+from meta_ads_operator.rules import evaluate
 from tests.helpers import policy_dict, write_json
 
 

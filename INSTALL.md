@@ -30,19 +30,19 @@ First verify the runtime. Some macOS installations still map `python3` to 3.9;
 the agent must locate or install Python 3.11+ before creating the virtual environment.
 
 ```bash
-git clone REPOSITORY_URL guarded-meta-ads-operator
-cd guarded-meta-ads-operator
+git clone REPOSITORY_URL meta-ads-operator
+cd meta-ads-operator
 python3 --version  # stop unless this is 3.11+
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -e .
 python -m unittest discover -s tests -v
-guarded-meta doctor
-guarded-meta capabilities
+meta-ads doctor
+meta-ads capabilities
 ```
 
 For Codex, ask the agent to install the bundled skill from
-`skills/guarded-meta-ads-operator` into its local skills directory and restart
+`skills/meta-ads-operator` into its local skills directory and restart
 Codex after validation. Claude Code reads the repository's `CLAUDE.md` and
 `AGENTS.md` directly. The operator code remains the same for both agents.
 
@@ -55,11 +55,11 @@ developer app. Ads need a real destination URL.
 On macOS:
 
 ```bash
-guarded-meta auth-store
+meta-ads auth-store
 ```
 
 The prompt is hidden and stores the token in macOS Keychain. On another
-platform, inject `GUARDED_META_ACCESS_TOKEN` through your own secret manager
+platform, inject `META_ADS_OPERATOR_ACCESS_TOKEN` through your own secret manager
 for the process. Do not write it to `.env` unless you fully understand and
 accept the local security tradeoff; `.env` is Git-ignored but remains plaintext.
 
@@ -68,7 +68,7 @@ accept the local security tradeoff; `.env` is Git-ignored but remains plaintext.
 Run read-only discovery before interviewing the user:
 
 ```bash
-guarded-meta discover > discovery.json
+meta-ads discover > discovery.json
 ```
 
 The agent should turn discovery into a provisional account hypothesis: what
@@ -101,7 +101,7 @@ widening. Catalog/DPA and account-dependent formats remain explicitly outside
 Before requesting an unfamiliar family, inspect it locally:
 
 ```bash
-guarded-meta capabilities --format "shop ads"
+meta-ads capabilities --format "shop ads"
 ```
 
 `RECOGNIZED_NOT_SUPPORTED` means the agent understands the requested Meta

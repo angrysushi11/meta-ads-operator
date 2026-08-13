@@ -1,11 +1,11 @@
 ---
-name: guarded-meta-ads-operator
-description: Plan, create, inspect, pause, activate, and report on Meta/Facebook/Instagram ads through the local Guarded Meta Ads Operator CLI. Use when a user asks to install the operator, connect or orient a Meta account, inventory a creative folder, propose or map ad copy, create campaigns/ad sets/ads, change status or bounded budgets, inspect insights, evaluate performance rules, or operate Meta ads in natural language.
+name: meta-ads-operator
+description: Plan, create, inspect, pause, activate, and report on Meta/Facebook/Instagram ads through the local Meta Ads Operator CLI. Use when a user asks to install the operator, connect or orient a Meta account, inventory a creative folder, propose or map ad copy, create campaigns/ad sets/ads, change status or bounded budgets, inspect insights, evaluate performance rules, or operate Meta ads in natural language.
 ---
 
-# Guarded Meta Ads Operator
+# Meta Ads Operator
 
-Use the agent for conversation and recommendations. Use `guarded-meta` for
+Use the agent for conversation and recommendations. Use `meta-ads` for
 deterministic validation, live writes, and receipts.
 
 ## Start
@@ -14,7 +14,7 @@ deterministic validation, live writes, and receipts.
 2. Run `python scripts/check_operator.py` from this skill when installation state is uncertain.
 3. Classify the request as read, local preparation, or live write.
 4. For existing accounts, run read-only discovery before asking the user to describe the account.
-5. For any unfamiliar format, run `guarded-meta capabilities --format NAME`
+5. For any unfamiliar format, run `meta-ads capabilities --format NAME`
    before proposing a plan. If it is recognized but unsupported, explain the
    prerequisite handler and stop. Never substitute another format.
 
@@ -46,9 +46,9 @@ in every mode.
 
 1. Inventory only explicitly allowed files/folders.
 2. Freeze approved media/copy/identity/destination mappings in a manifest.
-3. Run `guarded-meta plan ...` and show the plan summary plus hash.
+3. Run `meta-ads plan ...` and show the plan summary plus hash.
 4. For current strategic recommendations, browse official Meta sources and label `Meta says`, `Operator recommends`, and `User decides`.
-5. Apply only through `guarded-meta apply`; never paste tokens into chat or command arguments.
+5. Apply only through `meta-ads apply`; never paste tokens into chat or command arguments.
 6. Read the durable receipt and verify configured/effective status, IDs, media/copy/identity/destination/UTM fidelity, budget/spend guards, and errors.
 7. Read `api_usage` in the receipt. Stop on the local request cap, configured
    usage threshold, hard account throttle, or first mismatch. Never interpret

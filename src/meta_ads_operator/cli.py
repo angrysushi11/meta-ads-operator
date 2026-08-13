@@ -36,10 +36,10 @@ def _add_policy(parser: argparse.ArgumentParser) -> None:
 
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="guarded-meta",
+        prog="meta-ads",
         description="Plan, verify, and operate Meta ads through explicit policies and receipts.",
     )
-    parser.add_argument("--version", action="version", version="guarded-meta 0.1.0")
+    parser.add_argument("--version", action="version", version="meta-ads 0.1.0")
     commands = parser.add_subparsers(dest="command", required=True)
 
     doctor = commands.add_parser("doctor", help="Check local runtime, policy, and token availability")

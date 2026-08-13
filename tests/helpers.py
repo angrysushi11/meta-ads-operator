@@ -95,7 +95,7 @@ def advanced_manifest_dict(root: Path) -> dict[str, Any]:
     video.write_bytes(b"release-test-video-bytes")
 
     def media(path: Path) -> dict[str, str]:
-        from guarded_meta_ads.util import sha256_file
+        from meta_ads_operator.util import sha256_file
 
         return {"media_path": str(path), "media_sha256": sha256_file(path)}
 

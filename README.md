@@ -1,16 +1,15 @@
-# Guarded Meta Ads Operator
+# Meta Ads Operator
 
 Release candidate. Not yet published.
 
-A safety-first local CLI for creating and operating Meta ads with validated
+A policy-controlled local CLI for creating and operating Meta ads with validated
 manifests, paused-by-default creation, bounded activation and budget controls,
 idempotency, and verified readback receipts.
 
-“Guarded” describes how writes execute, not which creative ideas are allowed:
-the operator freezes an exact plan, checks account and budget boundaries,
+The operator freezes an exact plan, checks account and budget boundaries,
 requires the configured approval, stops on API pressure or mismatches, and
-verifies Meta's readback. It is not a claim that the tool supports every Meta
-advertising product.
+verifies Meta's readback. Those controls are operating behavior, not the brand
+name and not a claim that version 0.1 supports every Meta advertising product.
 
 The CLI is deterministic. Codex or Claude Code provides the conversational
 layer: it can inspect an existing account, propose sensible defaults, draft
@@ -25,7 +24,7 @@ You + Codex/Claude
 approved policy + frozen manifest + plan hash
        |
        v
-Guarded Meta Ads Operator
+Meta Ads Operator
        |
        | fresh reads and validated Marketing API calls
        v
@@ -62,19 +61,23 @@ and remain exact-name idempotent.
 
 The current alpha intentionally excludes billing, payment methods, account
 roles, Pixel/CAPI or storefront instrumentation, arbitrary Graph calls,
-deletion/archive, catalog/DPA, lead forms, app-install, partnership,
-click-to-message, Instant Experience, playable, and AR ads.
+deletion/archive, and delivery families that still need their own verified
+handlers: catalog/DPA, Shops and product tags, collection, lead forms and call
+ads, app promotion, partnership, click-to-message, existing-post promotion,
+Instant Experience, playable, and AR ads.
 
 If a user asks for Shop ads, catalog/DPA, lead forms, or another unsupported
 family, the agent does not guess and the CLI does not substitute a different
-format. `guarded-meta capabilities --format "shop ads"` explains the missing
+format. `meta-ads capabilities --format "shop ads"` explains the missing
 handler and current prerequisites, then planning fails locally before any Meta
 request. See [docs/FORMAT_SUPPORT.md](docs/FORMAT_SUPPORT.md).
 
 The five included formats use payload families already proven through Meta's
-live review/delivery path in the originating implementation. This clean-room
-package must still begin each new account with one PAUSED proof ad because
-permissions, objectives, assets, and Meta behavior vary by account.
+live review/delivery path in the originating implementation. Missing families
+can be added as plug-in handlers without rewriting the policy, planning,
+idempotency, rate-limit, receipt, or agent layers. This clean-room package must
+still begin each new account and each new handler with one PAUSED proof ad
+because permissions, objectives, assets, and Meta behavior vary by account.
 
 ## Conversational behavior
 
@@ -97,16 +100,16 @@ python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -e .
 
-guarded-meta doctor --policy examples/policy.example.json
-guarded-meta inventory /absolute/path/to/launch-folder --output inventory.json
+meta-ads doctor --policy examples/policy.example.json
+meta-ads inventory /absolute/path/to/launch-folder --output inventory.json
 
-guarded-meta plan create-ads \
+meta-ads plan create-ads \
   --policy policy.json \
   --manifest manifest.json \
   --output plan.json
 
 # Only after reviewing the complete plan:
-guarded-meta apply \
+meta-ads apply \
   --policy policy.json \
   --plan plan.json \
   --confirm THE_EXACT_PLAN_SHA256
@@ -117,8 +120,8 @@ single image and [examples/manifest-advanced.example.json](examples/manifest-adv
 for all five supported creative formats.
 
 Never put a Meta token in a manifest, command argument, chat transcript, Git
-file, or receipt. Use `guarded-meta auth-store` on macOS or inject
-`GUARDED_META_ACCESS_TOKEN` from a secret manager for the current process.
+file, or receipt. Use `meta-ads auth-store` on macOS or inject
+`META_ADS_OPERATOR_ACCESS_TOKEN` from a secret manager for the current process.
 
 ## Attribution
 
