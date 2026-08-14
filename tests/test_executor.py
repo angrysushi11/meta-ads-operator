@@ -7,7 +7,7 @@ from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
-from meta_ads_operator.errors import PolicyError
+from meta_ads_operator.errors import PolicyError, ReadbackError
 from meta_ads_operator.executor import execute_plan
 from meta_ads_operator.planning import build_budget_plan, build_create_ads_plan, build_status_plan
 from meta_ads_operator.policy import OperatorPolicy
@@ -154,8 +154,10 @@ class ExecutorTests(unittest.TestCase):
     def test_wrong_confirmation_blocks_before_write(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             policy, plan = self._fixture(Path(tmp))
+            client = FakeClient()
             with self.assertRaises(PolicyError):
-                execute_plan(plan, policy, FakeClient(), confirmation="wrong")
+                execute_plan(plan, policy, client, confirmation="wrong")
+            self.assertEqual(client.requests, [])
 
     def test_exact_status_and_bounded_budget_changes(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -192,6 +194,43 @@ class ExecutorTests(unittest.TestCase):
             self.assertTrue(result["verified"])
             self.assertEqual(len(result["results"]), 5)
             self.assertTrue(all(row["verification"]["verified"] for row in result["results"]))
+
+    def test_all_five_release_formats_are_idempotent_on_exact_rerun(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            policy = OperatorPolicy.load(write_json(root / "policy.json", policy_dict(root)))
+            manifest = write_json(root / "advanced.json", advanced_manifest_dict(root))
+            plan = build_create_ads_plan(manifest, policy)
+            client = FakeClient()
+            execute_plan(plan, policy, client, confirmation=plan["plan_sha256"])
+            first_request_count = len(client.requests)
+            result = execute_plan(plan, policy, client, confirmation=plan["plan_sha256"])
+            self.assertEqual(
+                [row["result"] for row in result["results"]],
+                ["idempotent_existing"] * 5,
+            )
+            self.assertFalse(
+                any(method == "POST" for method, _ in client.requests[first_request_count:])
+            )
+
+    def test_duplicate_live_name_blocks_before_any_write(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            policy, plan = self._fixture(root)
+            client = FakeClient()
+            for ad_id in ("810001", "810002"):
+                client.ads[ad_id] = {
+                    "id": ad_id,
+                    "name": plan["ads"][0]["name"],
+                    "adset_id": "333333",
+                    "campaign_id": "222222",
+                    "status": "PAUSED",
+                    "effective_status": "PAUSED",
+                    "creative": {"id": "999999"},
+                }
+            with self.assertRaises(ReadbackError):
+                execute_plan(plan, policy, client, confirmation=plan["plan_sha256"])
+            self.assertFalse(any(method == "POST" for method, _ in client.requests))
 
 
 if __name__ == "__main__":

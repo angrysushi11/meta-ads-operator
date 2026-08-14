@@ -71,6 +71,7 @@ def build_from_clean_copy() -> None:
                 sys.executable,
                 "-m",
                 "build",
+                "--no-isolation",
                 "--wheel",
                 "--sdist",
                 "--outdir",
