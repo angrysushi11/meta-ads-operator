@@ -20,9 +20,9 @@
 - Post-write readback is mandatory; unavailable data fails closed when it is a required gate.
 - Deletion and archive are absent from this alpha.
 
-## Before any public release
+## Before each release
 
 Run the test suite, the repository privacy scan, an independent secret scanner,
 and a full Git-history scan. Review every example, documentation file, fixture,
-receipt path, and generated package. Publication is a separate human decision.
-
+receipt path, and generated package. A source release never authorizes a live
+Meta write; account access and ad execution remain separate user decisions.

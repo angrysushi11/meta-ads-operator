@@ -1,6 +1,7 @@
 # Install and onboard
 
-Status: release-candidate instructions; repository URL is assigned at publication.
+Status: public-alpha instructions. Live Meta writes are untested in this
+standalone distribution; begin with read-only discovery and one PAUSED proof.
 
 ## The easy route: give this repository to an agent
 
@@ -30,7 +31,7 @@ First verify the runtime. Some macOS installations still map `python3` to 3.9;
 the agent must locate or install Python 3.11+ before creating the virtual environment.
 
 ```bash
-git clone REPOSITORY_URL meta-ads-operator
+git clone https://github.com/angrysushi11/meta-ads-operator.git
 cd meta-ads-operator
 python3 --version  # stop unless this is 3.11+
 python3 -m venv .venv

@@ -1,6 +1,6 @@
 # Meta Ads Operator
 
-Release candidate. Not yet published.
+Public alpha. Offline-tested; not yet live-smoke-tested as a standalone public distribution.
 
 A policy-controlled local CLI for creating and operating Meta ads with validated
 manifests, paused-by-default creation, bounded activation and budget controls,
@@ -131,3 +131,24 @@ at commit `762c224b060b233b66fb9af8a2f3865303ed757b`. See
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 This project is not affiliated with or endorsed by Meta.
+
+## Validation status
+
+**Live status: untested as a standalone public package.** The repository passes
+21 offline tests covering policy, planning, five mocked creative handlers,
+idempotency, readback mismatches, rate limits, media hashing, and secret
+redaction. Its release check also passes the privacy scan, an independent
+secret scan, and wheel/sdist builds.
+
+The originating private implementation created and read back a bounded batch
+of PAUSED ads, but that is not automatically proof that this generalized
+package works with another Meta app, account, objective, permission set, or
+current API response. Do not begin with a live batch. Install it, run
+`meta-ads doctor`, use read-only discovery, and then run one separately
+authorized PAUSED proof ad. Stop on any mismatch.
+
+The code currently defaults to Graph API `v25.0`. Meta's official changelog
+listed `v26.0` as the newest version on 2026-08-19 and listed `v25.0` support
+through 2028-07-29. The default remains pinned until this standalone package
+has a live proof on a newer version; change it deliberately in policy rather
+than silently following the newest release.

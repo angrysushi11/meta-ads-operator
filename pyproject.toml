@@ -9,7 +9,7 @@ description = "A local, safety-first CLI for planning and operating Meta ads."
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
-authors = [{name = "Meta Ads Operator contributors"}]
+authors = [{name = "Dasha Antonova"}]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Programming Language :: Python :: 3",

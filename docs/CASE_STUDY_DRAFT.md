@@ -1,6 +1,11 @@
-# Observed production workflow — bounded case study
+# Originating production workflow — not standalone validation
 
 This is a bounded case report, not a universal Meta benchmark.
+
+It describes the private implementation that informed this generalized
+package. The public standalone distribution has not yet completed its own live
+Meta smoke test. Its first external validation must be a separately authorized
+one-ad PAUSED proof with exact readback, not a batch.
 
 In one e-commerce batch, the operator created and individually
 verified 17 new paused ads in 3 minutes 50 seconds, about 13.5 seconds per ad.
