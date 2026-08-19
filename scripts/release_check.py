@@ -39,7 +39,7 @@ def independent_secret_scan() -> None:
         "scan",
         "--all-files",
         "--exclude-files",
-        r"(^|/)(\.venv|\.release-venv[^/]*|dist|build|src/meta_ads_operator\.egg-info)/",
+        r"(^|/)(\.git|\.venv|\.release-venv[^/]*|dist|build|src/meta_ads_operator\.egg-info)/",
     ]
     result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, check=True)
     payload = json.loads(result.stdout)
